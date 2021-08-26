@@ -46,6 +46,6 @@ app.get('/getData', (request, response)=> {
 
      
       // Send response to Endpoint
-      response.send();
+      response.send(projectData);
      });
    
