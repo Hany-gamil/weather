@@ -2,14 +2,14 @@
 
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+let newDate = d.getMonth()+1+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 // i make account on openWeather And get my apiKey
 
-const apiKey =` 47fba8f8c3b7832824319cc5f1f97dee`;
+const apiKey=`47fba8f8c3b7832824319cc5f1f97dee`; 
 // get apiURL FROM the openWeather
 
-const baseURL= ` http:// api.openweathermap.org/data/2.5/weather?zip=`
+const baseURL=`https://api.openweathermap.org/data/2.5/weather?zip=`
 
 // get id OF zip code into a variablr
 // get id of feeling into a variable
@@ -30,13 +30,13 @@ const baseURL= ` http:// api.openweathermap.org/data/2.5/weather?zip=`
     
   }
   else {
-    getTemperature()
+    getTemperature(zipCode)
     .then(data => postData("/setData", {date: newDate, temp: data.main.temp, content: content}))
   .then(() => updateUI())
   }
   });
 
-  async function getTemperature(baseURL , zipCode , apiKey){
+  async function getTemperature(zipCode ){
     const request = await fetch(baseURL +zipCode+"&appid="+apiKey+"&units=metric");
     try{
      const result = await request.json();
@@ -90,4 +90,5 @@ const baseURL= ` http:// api.openweathermap.org/data/2.5/weather?zip=`
   
   
 }
+ 
  
